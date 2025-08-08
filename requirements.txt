@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+sentence-transformers
+faiss-cpu
+langchain
+langchain-openai
+openai
+PyMuPDF
+python-docx
+requests
+nltk
