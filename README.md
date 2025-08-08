@@ -11,33 +11,16 @@ pinned: false
 
 # LLM Query-Retrieval API
 
-This project is a FastAPI backend for an intelligent document query and retrieval system powered by large language models (LLMs). It supports uploading and parsing multiple document types (PDF, DOCX, email, TXT), chunking large texts, semantic search, and clause matching to extract fact-based answers.
-
----
+This project is a FastAPI backend and Streamlit frontend for an intelligent document query and retrieval system powered by LLMs.
 
 ## Features
 
-- Upload and parse various document types: PDF, DOCX, EML, MSG, TXT  
-- Text chunking with NLTK sentence tokenizer  
-- Semantic similarity search for relevant chunks  
-- LLM-powered clause matching with OpenRouter API  
-- FastAPI REST API with endpoints for uploading, parsing, and querying documents  
-- CORS enabled for frontend integration  
+- Upload and parse PDFs, DOCX, emails, TXT
+- Semantic search with embeddings
+- LLM-powered question answering
+- FastAPI backend with Streamlit UI
 
----
-
-## Getting Started
-
-### Prerequisites
-
-- Python 3.8+  
-- Pip package manager  
-
----
-
-## How to Run
-
-You can run the FastAPI backend with:
+## How to run
 
 ```bash
-uvicorn src.main:app --reload
+streamlit run app.py
