@@ -21,3 +21,4 @@ torch==2.5.0
 chromadb==0.4.18
 PyPDF2==3.0.1
 mangum
+# langchain-community (remove this line)
