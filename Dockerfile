@@ -1,26 +1,30 @@
-# Dockerfile
+# Stage 1: Build dependencies
+FROM python:3.11-alpine AS builder
 
-FROM python:3.11-slim
-
-WORKDIR /app
-
-COPY ./app /app/app
-COPY ./requirements.txt /app
+RUN apk add --no-cache build-base poppler-utils poppler-dev libmagic libffi-dev
 
 WORKDIR /app
 
-# Install system dependencies for PDF, DOCX, emails if needed
-RUN apt-get update && apt-get install -y \
-    build-essential \
-    poppler-utils \
-    libpoppler-cpp-dev \
-    && apt-get clean
+COPY requirements.txt .
 
-# Install Python dependencies
-RUN pip install --no-cache-dir --upgrade pip && \
-    pip install --no-cache-dir -r requirements.txt
+RUN pip install --prefix=/install --no-cache-dir -r requirements.txt
 
-# Expose FastAPI port
-EXPOSE 8000
+COPY ./app ./app
+COPY ./streamlit_app ./streamlit_app
 
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+# Stage 2: Final image
+FROM python:3.11-alpine
+
+RUN apk add --no-cache poppler-utils libmagic tini
+
+WORKDIR /app
+
+COPY --from=builder /install /usr/local
+COPY --from=builder /app /app
+
+EXPOSE 8000 8501
+
+CMD ["tini", "--", "/bin/sh", "-c", "\
+    uvicorn app.main:app --host 0.0.0.0 --port 8000 & \
+    streamlit run streamlit_app/app.py --server.port=8501 --server.address=0.0.0.0 \
+"]
