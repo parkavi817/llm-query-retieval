@@ -1,7 +1,6 @@
-# Stage 1: Build dependencies
-FROM python:3.11-alpine AS builder
+FROM python:3.11-slim AS builder
 
-RUN apk add --no-cache build-base poppler-utils poppler-dev libmagic libffi-dev
+RUN apt-get update && apt-get install -y build-essential poppler-utils libpoppler-cpp-dev
 
 WORKDIR /app
 
@@ -12,10 +11,9 @@ RUN pip install --prefix=/install --no-cache-dir -r requirements.txt
 COPY ./app ./app
 COPY ./streamlit_app ./streamlit_app
 
-# Stage 2: Final image
-FROM python:3.11-alpine
+FROM python:3.11-slim
 
-RUN apk add --no-cache poppler-utils libmagic tini
+RUN apt-get update && apt-get install -y poppler-utils libmagic tini
 
 WORKDIR /app
 
