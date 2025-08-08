@@ -3,11 +3,12 @@ title: LLM Query-Retrieval API
 emoji: 🤖
 colorFrom: indigo
 colorTo: blue
-sdk: fastapi
-sdk_version: "0.104.1"
-app_file: main.py
+sdk: streamlit
+sdk_version: "1.28.2"
+app_file: app.py
 pinned: false
 ---
+
 
 # LLM Query-Retrieval API
 
