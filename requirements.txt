@@ -5,7 +5,7 @@ faiss-cpu==1.7.4
 langchain==0.0.350
 langchain-openai
 openai
-PyMuPDF==1.23.4
+PyMuPDF>=1.24.9
 python-docx
 requests
 nltk
@@ -17,7 +17,6 @@ python-dotenv==1.0.0
 pandas==2.1.3
 numpy==1.24.3
 transformers==4.35.2
-torch==2.0.1+cpu     # lighter CPU-only version
---extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.5.0+cpu --extra-index-url https://download.pytorch.org/whl/cpu
 chromadb==0.4.18
 PyPDF2==3.0.1
