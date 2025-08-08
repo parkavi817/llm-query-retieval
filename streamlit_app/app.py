@@ -55,7 +55,7 @@ with st.sidebar:
     st.markdown("---")
     st.markdown("**About**")
     st.markdown("This tool extracts answers from your documents using AI.")
-    st.markdown("[GitHub Repository](#)")  # Add your repo link
+    st.markdown("https://github.com/parkavi817/llm-query-retieval")   #repo link
 
 # Main content
 st.title("🧠 Document Intelligence Assistant")
