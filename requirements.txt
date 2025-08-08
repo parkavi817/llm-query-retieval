@@ -3,6 +3,9 @@ uvicorn
 sentence-transformers==2.2.2
 faiss-cpu==1.7.4
 langchain==0.0.350
+=======
+langchain==0.1.16
+langchain-community==0.0.32
 langchain-openai
 openai
 PyMuPDF>=1.24.9
@@ -20,3 +23,8 @@ transformers==4.35.2
 torch==2.5.0+cpu
 chromadb==0.4.18
 PyPDF2==3.0.1
+=======
+torch==2.5.0
+chromadb==0.4.18
+PyPDF2==3.0.1
+mangum
